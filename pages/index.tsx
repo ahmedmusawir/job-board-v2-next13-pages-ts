@@ -3,10 +3,32 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import { Box, Container, Row } from "@/components/layouts";
+import datasource from "@/data-layer";
+import { Company, CompanyData } from "@/data-layer/company-entities";
+import { CompanyApiResponse } from "@/services/companyService";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export const getStaticProps = async () => {
+  const companies: CompanyApiResponse = await datasource.getCompanies();
+
+  // console.log("Companies at HomePage:", companies);
+
+  const companyData = companies.data; // This will be of type CompanyData[].
+  const companyMeta = companies.meta; // This will be of type { pagination: Pagination }.
+
+  // Can even destructure data and meta properties:
+  const { data, meta } = companies;
+
+  return {
+    props: {
+      companies,
+    },
+    revalidate: 5,
+  };
+};
+
+export default function Home({ companies }: { companies: CompanyApiResponse }) {
   return (
     <Layout>
       <Head>
@@ -19,57 +41,17 @@ export default function Home() {
           <h1 className="h1">
             This is a starting point for ... Next.js 13 (no App router){" "}
           </h1>
-          <h2 className="h2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit
-          </h2>
-          <h3 className="h3">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit
-          </h3>
-          <p>
-            Possimus et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-          </p>
-        </Row>
-        <Row className={"prose flex flex-wrap justify-around"}>
-          {/* p-5 CLASS WILL BREAK EVERYTHING */}
-          <Box className={"p-3 w-[32rem]"}>
-            <h3>This is box one w/ prose class</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-              explicabo expedita neque voluptas exercitationem eum quia, nostrum
-              inventore itaque accusamus doloremque. Ipsam ratione repellendus
-              nulla libero doloremque non commodi tempore.
-            </p>
+          <Box>
+            <h2>Company Names (w/ New Pattern): </h2>
+            {companies &&
+              companies.data.map((company: CompanyData) => (
+                <li key={company.attributes.slug}>{company.attributes.name}</li>
+              ))}
           </Box>
-          <Box className={"p-3 w-[32rem]"}>
-            <h3>This is box two w/ prose class</h3>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-              explicabo expedita neque voluptas exercitationem eum quia, nostrum
-              inventore itaque accusamus doloremque. Ipsam ratione repellendus
-              nulla libero doloremque non commodi tempore.
-            </p>
-          </Box>
-        </Row>
-        <Row className={"prose-2xl grid gap-3 grid-auto-fit"}>
-          {/* p-5 CLASS WILL BREAK EVERYTHING */}
-          <Box className={"p-4"}>
-            <h4>This is 2nd Box One w/ prose 2xl class</h4>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-              et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-              voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-              quo. Iure.
-            </p>
-          </Box>
-          <Box className={"p-4"}>
-            <h4>This is 2nd Box Two w/ prose 2xl class</h4>
-
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-              et, ex eum rem mollitia totam eius ad, sapiente eos maiores
-              voluptatum, explicabo harum quos dolores nemo eaque reprehenderit
-              quo. Iure.
-            </p>
+          <Box>
+            <h2>Meta: Pagination </h2>
+            Page Size:
+            {companies && companies.meta.pagination.pageSize}
           </Box>
         </Row>
       </Container>

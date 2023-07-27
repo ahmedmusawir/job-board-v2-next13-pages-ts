@@ -1,8 +1,8 @@
-import { getCompanyBySlug } from "./company";
+import { CompanyApiResponse } from "@/services/companyService";
 
 export interface CompanyDataSource {
-  getCompanies: () => Promise<ApiResponseCompanies>;
-  getCompanySlugs: () => Promise<ApiResponseCompanySlugs>;
+  getCompanies: () => Promise<CompanyApiResponse>;
+  getCompanySlugs: () => Promise<string[]>;
   getCompanyBySlug: (slug: string) => Promise<CompanyData>;
 }
 

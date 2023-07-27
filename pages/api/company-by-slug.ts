@@ -15,14 +15,6 @@ export default async function handler(
     return;
   }
 
-  const data = await datasource?.getCompanyBySlug(slug);
+  const data = await datasource?.getCompanyBySlug("microsoft-inc");
   res.status(200).json(data);
 }
-
-// export default async function handler(
-//   req: NextApiRequest,
-//   res: NextApiResponse
-// ) {
-//   const data = await datasource?.getCompanyBySlug("cyberize-group-inc");
-//   res.status(200).json({ data });
-// }
