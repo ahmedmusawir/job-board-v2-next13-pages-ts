@@ -2,20 +2,20 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import { Box, Container, Row } from "@/components/layouts";
+import { Box, Page, Row } from "@/components/globals";
 import styles from "./demo.module.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Starter Home</title>
         <meta name="description" content="This is the demo page" />
       </Head>
       {/* <Container className={"border border-gray-500"} FULL={false}> */}
-      <Container className={""} FULL={false}>
+      <Page className={""} FULL={false}>
         <Row className={"prose"}>
           <h1 className="h1">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit
@@ -327,7 +327,7 @@ export default function Home() {
             </p>
           </Box>
         </Row>
-      </Container>
-    </Layout>
+      </Page>
+    </>
   );
 }

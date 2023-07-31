@@ -2,19 +2,20 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import { Box, Container, Row } from "@/components/layouts";
+import { Box, Container, Row } from "@/components/globals";
+import Page from "@/components/globals/Page";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function PageTemplate() {
+export default function Team() {
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next Page Template</title>
         <meta name="description" content="This is the demo page" />
       </Head>
       {/* <Container className={"border border-gray-500"} FULL={false}> */}
-      <Container className={""} FULL={false}>
+      <Page className={""} FULL={false}>
         <Row className="prose max-w-3xl mx-auto">
           <h1 className="h1">This is the Page Template (Copy Me)</h1>
           <h2 className="h2">
@@ -30,7 +31,7 @@ export default function PageTemplate() {
             natus quam?
           </p>
         </Row>
-      </Container>
-    </Layout>
+      </Page>
+    </>
   );
 }

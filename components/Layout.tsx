@@ -1,5 +1,5 @@
 import { ReactNode, useContext } from "react";
-import { Footer, Footerbar, Main, Navbar } from "./layouts";
+import { Footer, Footerbar, Main, Navbar } from "./globals";
 import { ThemeContext } from "@/contexts/ThemeContext";
 
 interface LayoutProps {
@@ -12,13 +12,14 @@ function Layout({ children }: LayoutProps) {
   return (
     <>
       <div className="flex flex-col min-h-screen" data-theme={theme}>
-        <Navbar className="bg-base-300" />
+        <Navbar />
         <Main className="flex flex-col">
           {children
             ? children
             : "This is a Layout container. Must have children"}
         </Main>
-        <Footer className="navbar bg-neutral text-neutral-content">
+        {/* <Footer className="navbar bg-neutral text-neutral-content"> */}
+        <Footer className="">
           <Footerbar />
         </Footer>
       </div>
