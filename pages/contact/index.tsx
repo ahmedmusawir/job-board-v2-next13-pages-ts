@@ -4,23 +4,22 @@ import Head from "next/head";
 import Layout from "@/components/Layout";
 import { Box, Container, Row } from "@/components/globals";
 import Page from "@/components/globals/Page";
-import Team from "@/components/ui-ux/Team";
-import WorkWithUs from "@/components/ui-ux/WorkWithUs";
-import Pricing from "@/components/ui-ux/Pricing";
+import ContactUs from "@/components/ui-ux/ContactUs";
+import OurOffice from "@/components/ui-ux/OurOffice";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function TeamPage() {
+export default function ContactPage() {
   return (
     <>
       <Head>
         <title>Next Page Template</title>
         <meta name="description" content="This is the demo page" />
       </Head>
+      {/* <Container className={"border border-gray-500"} FULL={false}> */}
       <Page className={""} FULL={false}>
-        <WorkWithUs />
-        <Team />
-        <Pricing />
+        <ContactUs />
+        <OurOffice />
       </Page>
     </>
   );

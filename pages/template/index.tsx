@@ -7,7 +7,7 @@ import Page from "@/components/globals/Page";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Team() {
+export default function TemplatePage() {
   return (
     <>
       <Head>

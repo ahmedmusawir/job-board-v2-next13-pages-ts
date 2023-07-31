@@ -1,6 +1,6 @@
 import { useRef, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
-import "./Contact.scss";
+import "./Contact.module.scss";
 
 // npm i @emailjs/browser
 

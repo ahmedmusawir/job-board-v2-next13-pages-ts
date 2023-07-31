@@ -24,6 +24,7 @@ module.exports = {
   plugins: [
     require("@tailwindcss/typography"),
     require("@shrutibalasa/tailwind-grid-auto-fit"),
+    require("@tailwindcss/forms"),
     require("daisyui"),
   ],
   daisyui: {

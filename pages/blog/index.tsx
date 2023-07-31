@@ -1,26 +1,22 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import Head from "next/head";
-import Layout from "@/components/Layout";
-import { Box, Container, Row } from "@/components/globals";
 import Page from "@/components/globals/Page";
-import Team from "@/components/ui-ux/Team";
-import WorkWithUs from "@/components/ui-ux/WorkWithUs";
-import Pricing from "@/components/ui-ux/Pricing";
+import Blog from "@/components/ui-ux/Blog";
+import BlogCTA from "@/components/ui-ux/BlogCTA";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function TeamPage() {
+export default function BlogPage() {
   return (
     <>
       <Head>
         <title>Next Page Template</title>
         <meta name="description" content="This is the demo page" />
       </Head>
+      {/* <Container className={"border border-gray-500"} FULL={false}> */}
       <Page className={""} FULL={false}>
-        <WorkWithUs />
-        <Team />
-        <Pricing />
+        <Blog />
+        <BlogCTA />
       </Page>
     </>
   );
