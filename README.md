@@ -4,8 +4,8 @@ A Next.js 13 project without the App router. TS + Strapi v4 - New pattern with g
 
 ## Features:
 
-- Jobs List page (static)
-- Single Job page by slug (static)
-- Single Company page by slug w/ related jobs (static)
-- Full-Text Search
-- Filters by Job type, Job category, Tags (using useState)
+- Home Page (w/ Tailwind Components)
+- About Page
+- Blog Page
+- Contact Page
+- clientApi, Http Layer, Data Services, Data Layer, Custom API
